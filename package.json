@@ -6,7 +6,8 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"preinstall": "npx only-allow pnpm"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
