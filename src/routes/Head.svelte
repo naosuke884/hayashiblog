@@ -1,14 +1,14 @@
 <script>
-    import GithubIcon from "./GithubIcon.svelte";
-    import XIcon from "./XIcon.svelte";
+    import GithubIcon from "./HeadGithubIcon.svelte";
+    import XIcon from "./HeadXIcon.svelte";
 
-    export let title="";
+    export let current_title="";
 </script>
 
 <div class="container">
-    <div class:title>
+    <div class:current_title>
         <span>
-            {title}
+            {current_title}
         </span>
     </div>
     
@@ -31,7 +31,7 @@
         position: fixed;
         background-color: #1E1E1E;
     }
-    .title{
+    .current_title{
         display: flex;
         width: 50%;
         height: 100%;
@@ -39,7 +39,7 @@
         align-items: center;
         flex-shrink: 0;
     }
-    .title span{
+    .current_title span{
         color: #D9D9D9;
         font-family: Inter;
         font-size: 5rem;

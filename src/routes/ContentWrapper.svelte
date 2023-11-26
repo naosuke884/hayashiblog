@@ -4,11 +4,11 @@
     const dispatch = createEventDispatcher();
     let el;
     let rect;
-    const val = "about";
     export let title_key;
+    export let current_title_key;
     const changeTitleDispatch = ()=>{
-        if (title_key != val && rect.bottom - window.scrollY <= window.innerHeight){
-            dispatch('changeTitle', { "title_key": val});
+        if (current_title_key != title_key && rect.bottom - window.scrollY <= window.innerHeight){
+            dispatch('changeTitle', { 'title_key': title_key});
         };
     };
     onMount(() => {
@@ -21,6 +21,9 @@
 </script>
 
 <div class='container' bind:this={el}>
+    <slot>
+        Hi…('_')/
+    </slot>
 </div>
 
 <style>

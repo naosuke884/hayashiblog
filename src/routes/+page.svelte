@@ -1,8 +1,9 @@
 <script>
     import Head from "./Head.svelte";
-    import Top from  "./Top.svelte";
-    import About from "./About.svelte";
-    import Log from "./Log.svelte";
+    import Top from  "./ContentTop.svelte";
+    import About from "./ContentAbout.svelte";
+    import Log from "./ContentLog.svelte";
+    import ContentWrapper from "./ContentWrapper.svelte";
 
     let titles = {
         "top": "",
@@ -10,19 +11,30 @@
         "log": "Log",
         "works": "Works",
     };
-    let title_key = "top";
-    let title = titles[title_key];
+    let contents = [
+        {'title_key': 'top', 'component': Top},
+        {'title_key': 'about', 'component': About},
+        {'title_key': 'log', 'component': Log},
+    ];
+    let current_title_key = "top";
+    let current_title = titles[current_title_key];
     const changeTitle = (event) => {
-        title_key = event.detail.title_key;
-        title = titles[title_key];
+        current_title_key = event.detail.title_key;
+        current_title = titles[current_title_key];
     };
 </script>
 
 <div class='container'>
-    <Head bind:title />
-    <Top bind:title_key on:changeTitle={changeTitle} />
-    <About bind:title_key on:changeTitle={changeTitle} />
-    <Log bind:title_key on:changeTitle={changeTitle} />
+    <Head bind:current_title />
+    {#each contents as content}
+        <ContentWrapper
+            title_key={content.title_key}
+            current_title_key={current_title_key}
+            on:changeTitle={changeTitle}
+        >
+            <svelte:component this={content.component} />
+        </ContentWrapper>
+    {/each}
 </div>
 
 <style>
