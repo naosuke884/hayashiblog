@@ -4,6 +4,7 @@
     import About from "./ContentAbout.svelte";
     import Log from "./ContentLog.svelte";
     import ContentWrapper from "./ContentWrapper.svelte";
+    import { onMount } from 'svelte';
 
     let titles = {
         "top": "",
@@ -29,7 +30,6 @@
     {#each contents as content}
         <ContentWrapper
             title_key={content.title_key}
-            current_title_key={current_title_key}
             on:changeTitle={changeTitle}
         >
             <svelte:component this={content.component} />

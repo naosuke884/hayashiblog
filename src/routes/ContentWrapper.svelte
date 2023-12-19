@@ -2,25 +2,24 @@
     import { createEventDispatcher } from 'svelte';
     import { onMount } from 'svelte';
     const dispatch = createEventDispatcher();
-    let el;
-    let rect;
+    let element;
     export let title_key;
-    export let current_title_key;
     const changeTitleDispatch = ()=>{
-        if (current_title_key != title_key && rect.bottom - window.scrollY <= window.innerHeight){
-            dispatch('changeTitle', { 'title_key': title_key});
-        };
+        dispatch('changeTitle', { 'title_key': title_key});
     };
     onMount(() => {
-        rect = el.getBoundingClientRect();
-        changeTitleDispatch();
+        let rect = element.getBoundingClientRect();
+        const top = rect.top - rect.top / 4;
+        const bottom = rect.bottom;
         window.addEventListener('scroll', () => {
-            changeTitleDispatch();
+            if (top <= window.scrollY && window.scrollY < bottom){
+                changeTitleDispatch();
+            }
         });
     });
 </script>
 
-<div class='container' bind:this={el}>
+<div class='container' bind:this={element}>
     <slot>
         Hi…('_')/
     </slot>

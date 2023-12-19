@@ -6,7 +6,7 @@
 </script>
 
 <div class="container">
-    <div class:current_title>
+    <div class='title'>
         <span>
             {current_title}
         </span>
@@ -31,7 +31,7 @@
         position: fixed;
         background-color: #1E1E1E;
     }
-    .current_title{
+    .title{
         display: flex;
         width: 50%;
         height: 100%;
@@ -39,7 +39,7 @@
         align-items: center;
         flex-shrink: 0;
     }
-    .current_title span{
+    .title span{
         color: #D9D9D9;
         font-family: Inter;
         font-size: 5rem;
