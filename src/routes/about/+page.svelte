@@ -66,6 +66,7 @@
         justify-content: center;
         align-items: start;
         flex-direction: column;
+        margin-bottom: 5rem;
     }
     .log_title{
         width: 100%;
